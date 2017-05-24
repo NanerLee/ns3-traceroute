@@ -3,7 +3,7 @@
  * @Date:   2017-05-23T21:51:30+08:00
  * @Email:  nanerlee@qq.com
  * @Last modified by:   nanerlee
- * @Last modified time: 2017-05-24T10:12:44+08:00
+ * @Last modified time: 2017-05-24T11:27:17+08:00
  * @Copyright: Copyright (c) by NanerLee. All Rights Reserved.
  */
 
@@ -183,7 +183,9 @@ void Traceroute::Receive()
         timeout.GetData(payload);
 
         std::ostringstream oss;
-        realFrom.GetIpv4().Print(oss);   // get IPv4 address
+        realFrom.GetIpv4().Print(oss);  // get IPv4 address
+
+        // payload[7] and payload[8] is seq field
         uint32_t echo_seq = payload[7];  // get echo_seq(generally echo < 10)
         if (echo_seq == seq)
         {
