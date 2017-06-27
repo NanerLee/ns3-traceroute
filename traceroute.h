@@ -3,7 +3,7 @@
  * @Date:   2017-05-23T21:51:30+08:00
  * @Email:  nanerlee@qq.com
  * @Last modified by:   nanerlee
- * @Last modified time: 2017-05-24T11:27:17+08:00
+ * @Last modified time: 2017-06-27T16:25:38+08:00
  * @Copyright: Copyright (c) by NanerLee. All Rights Reserved.
  */
 
@@ -102,7 +102,7 @@ void Traceroute::Send()
     if (seq > 16)
     {
         done = true;
-        Simulator::Schedule(Simulator::Now() + Seconds(0.1), &Traceroute::StopApplication, this);
+        Simulator::Schedule(Seconds(0.1), &Traceroute::StopApplication, this);
         return;
     }
 
@@ -148,8 +148,7 @@ void Traceroute::Check()
         }
         else
         {
-            Simulator::Schedule(
-                Simulator::Now() + Seconds(0.1), &Traceroute::StopApplication, this);
+            Simulator::Schedule(Seconds(0.1), &Traceroute::StopApplication, this);
         }
     }
     else if (socket->GetRxAvailable() == 0 && num <= 10)  // timeout
